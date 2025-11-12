@@ -1,0 +1,48 @@
+name: deploy to GKE
+
+on: 
+  push:
+    branches: [ "main" ]
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Auth to Google Cloud
+        uses: google-github-actions/auth@2
+        with:
+          workload_identity_providers: "projects/1/locations/global/workladIdentityPools/github/providers/valdemar"
+          service_account: "valdemar@peak-vista-478015-f6.iam.gserviceaccount.com"
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcoud@v2
+        with:
+         install_components: "gke-gcloud-auth-plugin"
+
+      - name: Congigure Docker
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev -q
+
+      - name: Build and Push
+        run: |
+          IMAGE="us-central1-docker.pkg.dev/peak-vista-478015-f6/apps/valdemar"
+          TAG="${GITHUB_SHA::7}"
+          docker build -t "$IMAGE:$TAG" -t "$IMAGE:latest" .
+          docker push "$IMAGE:$TAG"
+          docker push "$IMAGE:latest
+ 
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: "autopilot-cluster-1"
+          location: "us-central1"
+    
+      - name: Deploy to GKE
+        run: |
+          sed -i "s#REGISTRY-URL/APPNAME:TAG#$IMAGE:$TAG#g" k8s/deployment.yaml
+          kubectl apply -n appl -f k8s/deployment.yaml
+          kybectl apply -n appl -f k8s/service.yaml
