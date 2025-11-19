@@ -13,14 +13,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Build (if needed)
-      run: |
-        echo "Run your build steps here"
-        # e.g. npm install && npm run build
-
-    - name: Package app
-      run: |
-        tar -czf vc.tar.gz .
+    - name: Package source code
+      run: tar -czf vc.tar.gz .
 
     - name: Copy artifact to VM
       uses: appleboy/scp-action@v0.1.7
@@ -39,5 +33,4 @@ jobs:
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.VM_SSH_KEY }}
         passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
-        script: |
-          sudo /usr/local/bin/deploy_app.sh vc
+        script: sudo /usr/local/bin/deploy_app.sh vc
