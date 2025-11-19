@@ -8,7 +8,7 @@ simple php app with connection to database, for deployment on GKE.
 SSH KEY= github.com/valdemarcz/uwb_app/gcp_vm_key
 
 /var/www/vc
-
+ 
 Username: github-actions
 
 passphrase: github
