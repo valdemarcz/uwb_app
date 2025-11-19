@@ -9,25 +9,43 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    name: Deploy App
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      # 2️⃣ Add SSH key (stored in GitHub Secrets)
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+    - name: Build (if needed)
+      run: |
+        echo "Run your build steps here"
+        # e.g. npm install && npm run build
 
-      # 3️⃣ Deploy to VM
-      - name: Deploy app
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.GCP_VM_USER }}@${{ secrets.GCP_VM_IP }} << 'EOF'
-            APP_DIR="/var/www/valdemar"   # 👈 change per repo!
-            cd $APP_DIR
-            git pull origin main
-            composer install --no-dev --optimize-autoloader
-            php artisan migrate --force || true
-            sudo systemctl restart apache2
-          EOF
+    - name: Package app
+      run: |
+        tar -czf vc.tar.gz .
+
+    - name: Copy artifact to VM
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USER }}
+        key: ${{ secrets.VM_SSH_KEY }}
+        source: "vc.tar.gz"
+        target: "/tmp/vc.tar.gz"
+
+    - name: Run remote deploy script
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USER }}
+        key: ${{ secrets.VM_SSH_KEY }}
+        script: |
+          sudo /usr/local/bin/deploy_app.sh vc
