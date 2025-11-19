@@ -2,24 +2,21 @@ name: DB Migrations
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   migrate:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up Flyway
+        uses: flyway/flyway-action@v2
         with:
-          php-version: '8.2'
-
-      - name: Run migrations
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}       # Public IP
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-        run: php migrations.php
+          url: jdbc:mysql://${{ secrets.DB_HOST }}/${{ secrets.DB_NAME }}
+          user: ${{ secrets.DB_USER }}
+          password: ${{ secrets.DB_PASSWORD }}
+          locations: filesystem:sql
