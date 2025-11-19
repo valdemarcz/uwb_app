@@ -13,9 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Package source code
-      run: tar -czf vc.tar.gz .
-
     - name: Copy artifact to VM
       uses: appleboy/scp-action@v0.1.7
       with:
@@ -23,8 +20,10 @@ jobs:
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.VM_SSH_KEY }}
         passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
-        source: "vc.tar.gz"
-        target: "/tmp/vc.tar.gz"
+        source: "./"
+        target: "/var/www/apps/vc"
+        overwrite: true
+        rm: true
 
     - name: Run remote deploy script
       uses: appleboy/ssh-action@v1.0.3
