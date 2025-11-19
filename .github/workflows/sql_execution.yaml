@@ -23,24 +23,11 @@ jobs:
           -v $PWD/gcp-sa.json:/secrets/gcp-sa.json:ro \
           gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.19.0 \
           tcp:3306=$CLOUDSQL_CONNECTION_NAME \
-          --credentials-file=/secrets/gcp-sa.json
-
-      - name: Wait for Cloud SQL Proxy
-        run: |
-          echo "Waiting for Cloud SQL Proxy..."
-          for i in {1..15}; do
-            nc -z 127.0.0.1 3306 && break
-            echo "Waiting..."
-            sleep 2
-          done
-
-      - name: Install Flyway CLI
-        run: |
-          curl -L https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.20.0/flyway-commandline-9.20.0-linux-x64.tar.gz | tar xz
-          sudo ln -s $PWD/flyway-9.20.0/flyway /usr/local/bin/flyway
-
-      - name: Run Flyway migrations
-        run: |
-          flyway -url=jdbc:mysql://127.0.0.1:3306/$DB_NAME \
-                 -user=$DB_USER \
-                 -password=$DB_PASSWORD migrate
+          --credentials-file=/secrets/gcp-sa.json \
+          sh -c "
+            ./cloud-sql-proxy tcp:3306=$CLOUDSQL_CONNECTION_NAME --credentials-file=/secrets/gcp-sa.json &
+            PROXY_PID=\$!
+            sleep 10
+            flyway -url=jdbc:mysql://127.0.0.1:3306/$DB_NAME -user=$DB_USER -password=$DB_PASSWORD migrate
+            kill \$PROXY_PID
+          "
