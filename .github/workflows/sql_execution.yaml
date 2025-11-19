@@ -31,25 +31,26 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           CLOUDSQL_CONNECTION_NAME: ${{ secrets.CLOUDSQL_CONNECTION_NAME }}
         run: |
-          # Start proxy in background
+          # Start proxy on port 3306
           ./cloud_sql_proxy -instances=$CLOUDSQL_CONNECTION_NAME=tcp:3306 &
           PROXY_PID=$!
       
-          # Wait for proxy to be ready
-          echo "Waiting for Cloud SQL Auth Proxy to start..."
-          for i in {1..10}; do
+          # Wait until proxy port is ready
+          echo "Waiting for Cloud SQL Auth Proxy..."
+          for i in {1..15}; do
             nc -z 127.0.0.1 3306 && break
             echo "Waiting..."
             sleep 2
           done
       
-          # Run Flyway
+          # Install Flyway CLI
           curl -L https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.20.0/flyway-commandline-9.20.0-linux-x64.tar.gz | tar xz
           sudo ln -s $PWD/flyway-9.20.0/flyway /usr/local/bin/flyway
       
+          # Run migrations
           flyway -url=jdbc:mysql://127.0.0.1:3306/$DB_NAME \
                  -user=$DB_USER \
                  -password=$DB_PASSWORD migrate
       
-          # Kill proxy after migrations
+          # Stop proxy
           kill $PROXY_PID
