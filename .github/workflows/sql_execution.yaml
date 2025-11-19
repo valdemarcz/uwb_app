@@ -19,12 +19,11 @@ jobs:
 
       - name: Start Cloud SQL Auth Proxy (Docker) using CLOUDSQL_CONNECTION_NAME
         run: |
-          docker run --rm -d \
-            -p 3306:3306 \
-            -v $PWD/gcp-sa.json:/secrets/gcp-sa.json:ro \
-            gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.19.0 \
-            tcp:3306=$CLOUDSQL_CONNECTION_NAME \
-            --credentials-file=/secrets/gcp-sa.json
+         docker run --rm -d --network host \
+          -v $PWD/gcp-sa.json:/secrets/gcp-sa.json:ro \
+          gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.19.0 \
+          tcp:3306=$CLOUDSQL_CONNECTION_NAME \
+          --credentials-file=/secrets/gcp-sa.json
 
       - name: Wait for Cloud SQL Proxy
         run: |
