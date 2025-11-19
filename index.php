@@ -1,17 +1,4 @@
 <?php
-/**
- * Simple PHP Deployment Application
- *
- * This single-file script is designed for easy deployment testing.
- * It displays server information, environment variables, and the current date/time.
- * It has no external dependencies or connections.
- *
- * To use:
- * 1. Save this code as a file named `index.php`.
- * 2. Upload the file to your PHP-enabled web server's public directory.
- * 3. Access the file via a web browser to see the results.
- */
-
 // Define application constants
 define('APP_NAME', 'Simple PHP Deploy App');
 define('APP_VERSION', '1.0.0');
