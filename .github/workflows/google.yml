@@ -21,7 +21,7 @@ jobs:
         key: ${{ secrets.VM_SSH_KEY }}
         passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
         source: "./"
-        target: "/var/www/apps/vc"
+        target: "/var/www/vc"
         overwrite: true
         rm: true
 
