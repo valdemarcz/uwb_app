@@ -38,6 +38,7 @@ jobs:
         host: ${{ secrets.VM_HOST }}
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.VM_SSH_KEY }}
+        passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
         source: "vc.tar.gz"
         target: "/tmp/vc.tar.gz"
 
@@ -47,5 +48,6 @@ jobs:
         host: ${{ secrets.VM_HOST }}
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.VM_SSH_KEY }}
+        passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
         script: |
           sudo /usr/local/bin/deploy_app.sh vc
