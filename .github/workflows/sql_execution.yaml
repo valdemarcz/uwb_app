@@ -24,14 +24,13 @@ jobs:
           mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" -e "SELECT USER();"
       
       - name: Run Flyway migrations
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/sql:/flyway/sql \
+            -e DB_HOST=${{ secrets.DB_HOST }} \
+            -e DB_USER=${{ secrets.DB_USER }} \
+            -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            -e DB_NAME=${{ secrets.DB_NAME }} \
             flyway/flyway:9.20.0 \
             -url=jdbc:mysql://$DB_HOST/$DB_NAME \
             -user=$DB_USER \
