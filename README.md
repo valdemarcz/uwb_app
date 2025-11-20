@@ -15,8 +15,13 @@ passphrase: github
 
 
 Database:
+
 GCP_SA_KEY: https://github.com/valdemarcz/uwb_app/blob/main/peak-vista-478015-f6-6e6f1f882985.json
+
 DB_NAME:Numer albumu
+
 DB_HOST: 136.114.93.122
+
 DB_USER: Stud
+
 DB_PASSWORD: Uwb123!!
