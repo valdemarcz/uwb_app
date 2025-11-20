@@ -23,6 +23,6 @@ DB_NAME:Numer albumu
 
 DB_HOST: 136.114.93.122
 
-DB_USER: Stud
+DB_USER: stud
 
 DB_PASSWORD: Uwb123!!
