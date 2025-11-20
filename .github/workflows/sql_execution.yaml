@@ -31,3 +31,4 @@ jobs:
             DB_HOST: ${{ secrets.DB_HOST }}
         run: |
           echo "Running SQL script..."
+          mysql --host=$DB_HOST --user=$DB_USER --password=$DB_PASSWORD $DB_NAME < ./sql/001_create_users.sql
