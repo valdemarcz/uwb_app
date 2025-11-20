@@ -12,6 +12,8 @@ Przyklad: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/sql_
 Sprawozdanie:
 Link do Github repozytorii, oraz opis swojego rozwiazania.
 
+Sprawozdanie odesłać: v.cerniavski@uwb.edu.pl
+
 Porty:
 
 89419 - 8002
