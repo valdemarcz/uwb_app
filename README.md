@@ -1,6 +1,7 @@
 # uwb_app
-simple php app with connection to database, for deployment on GKE.
+simple php app with connection to database, for deployment VM
 
+https://github.com/valdemarcz/uwb_app
 
 
 136.116.111.59 external IP
