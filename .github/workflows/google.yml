@@ -3,7 +3,7 @@ name: Deploy PHP App to Google Cloud VM
 on:
   push:
     branches:
-      - main
+      - main 
  
 jobs:
   deploy:
