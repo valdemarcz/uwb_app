@@ -59,7 +59,7 @@ Database:
 
 GCP_SA_KEY: https://github.com/valdemarcz/uwb_app/blob/main/peak-vista-478015-f6-6e6f1f882985.json
 
-DB_NAME:Numer albumu
+DB_NAME:studNumer albumu przyklad: stud88327
 
 DB_HOST: 34.58.246.93
 
