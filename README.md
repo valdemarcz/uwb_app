@@ -44,7 +44,7 @@ simple php app with connection to database, for deployment VM
 https://github.com/valdemarcz/uwb_app
 
 
-136.116.111.59 external IP
+34.30.137.23 external IP
 
 SSH KEY= github.com/valdemarcz/uwb_app/gcp_vm_key
 
@@ -61,7 +61,7 @@ GCP_SA_KEY: https://github.com/valdemarcz/uwb_app/blob/main/peak-vista-478015-f6
 
 DB_NAME:Numer albumu
 
-DB_HOST: 136.114.93.122
+DB_HOST: 34.58.246.93
 
 DB_USER: stud
 
