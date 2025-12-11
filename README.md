@@ -66,3 +66,14 @@ DB_HOST: 34.58.246.93
 DB_USER: stud
 
 DB_PASSWORD: Uwb123!!
+
+
+
+KUBERNETES:
+
+
+
+projekt: hopeful-keep-480204-e0
+IP:34.63.108.128
+
+
