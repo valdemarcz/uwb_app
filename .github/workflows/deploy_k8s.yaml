@@ -20,7 +20,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t gcr.io/YOUR-PROJECT/uwb-app:latest .
+        docker build -t gcr.io/hopeful-keep-480204-e0/uwb-app:latest .
 
     - name: Authorize Docker push
       run: |
@@ -28,14 +28,14 @@ jobs:
 
     - name: Push image
       run: |
-        docker push gcr.io/YOUR-PROJECT/uwb-app:latest
+        docker push gcr.io/hopeful-keep-480204-e0/uwb-app:latest
 
     - name: SSH into VM and deploy
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.GCE_HOST }}
-        username: ${{ secrets.GCE_USER }}
-        key: ${{ secrets.GCE_SSH_KEY }}
+        host: ${{ secrets.K8S_HOST }}
+        username: ${{ secrets.K8S_USER }}
+        key: ${{ secrets.K8S_SSH_KEY }}
         script: |
           cd ~/app
           git pull origin main
