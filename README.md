@@ -69,6 +69,12 @@ DB_PASSWORD: Uwb123!!
 
 
 
+
+
+
+
+
+
 KUBERNETES:
 
 
