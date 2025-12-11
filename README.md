@@ -74,6 +74,7 @@ KUBERNETES:
 
 
 projekt: hopeful-keep-480204-e0
+
 IP:34.63.108.128
 
 
