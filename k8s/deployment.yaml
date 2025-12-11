@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uwb-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uwb-app
+  template:
+    metadata:
+      labels:
+        app: uwb-app
+    spec:
+      containers:
+        - name: uwb-app
+          image: gcr.io/YOUR-PROJECT/php-app:latest
+          ports:
+            - containerPort: 80
