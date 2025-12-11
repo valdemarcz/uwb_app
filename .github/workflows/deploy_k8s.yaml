@@ -9,34 +9,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up gcloud
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-        service_account_key: ${{ secrets.K8S_KEY }}
-        project_id: hopeful-keep-480204-e0
-
-    - name: Build Docker image
-      run: |
-        docker build -t us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest .
-
-    - name: Authorize Docker push
-      run: |
-        gcloud auth configure-docker gcr.io
-
-    - name: Push image
-      run: |
-        docker push us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
-
-    - name: SSH into VM and deploy
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.K8S_HOST }}
-        username: ${{ secrets.VM_USER }}
-        key: ${{ secrets.VM_SSH_KEY }}
-        script: |
-          cd ~/app
-          git pull origin main
-          kubectl apply -f k8s/
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.K8S_KEY }}
+      
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: hopeful-keep-480204-e0
+    
+      - name: Build Docker image
+        run: |
+          docker build -t us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest .
+    
+      - name: Authorize Docker push
+        run: |
+          gcloud auth configure-docker gcr.io
+    
+      - name: Push image
+        run: |
+          docker push us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
+    
+      - name: SSH into VM and deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.K8S_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd ~/app
+            git pull origin main
+            kubectl apply -f k8s/
