@@ -15,7 +15,7 @@ jobs:
     - name: Set up gcloud
       uses: google-github-actions/setup-gcloud@v2
       with:
-          service_account_key: ${{ secrets.K8S_SA_KEY }}
+          service_account_key: ${{ secrets.K8S_KEY }}
         project_id: hopeful-keep-480204-e0
 
     - name: Build Docker image
@@ -28,7 +28,7 @@ jobs:
 
     - name: Push image
       run: |
-        docker push gcr.io/hopeful-keep-480204-e0/uwb-app:latest
+        docker push gcr.io/hopeful-keep-480204-e0/uwb/uwb-app:latest
 
     - name: SSH into VM and deploy
       uses: appleboy/ssh-action@v1.0.3
