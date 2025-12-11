@@ -15,8 +15,8 @@ jobs:
     - name: Set up gcloud
       uses: google-github-actions/setup-gcloud@v2
       with:
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        project_id: YOUR-PROJECT-ID
+          service_account_key: ${{ secrets.K8S_SA_KEY }}
+        project_id: hopeful-keep-480204-e0
 
     - name: Build Docker image
       run: |
