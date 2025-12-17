@@ -32,7 +32,17 @@ jobs:
       - name: Push image
         run: |
           docker push us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
-    
+
+      - name: Update app files
+        uses: appleboy/scp-action@v1.0.3
+        with:
+            host: ${{ secrets.K8S_HOST }}
+            username: ${{ secrets.VM_USER }}
+            key: ${{ secrets.VM_SSH_KEY }}
+            passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
+            source: "k8s/*"
+            target: "~/app/k8s/"
+      
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
