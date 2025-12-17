@@ -1,4 +1,4 @@
-Zadanie:
+Zadania:
 
 Automatyczne zaladowanie PHP aplikacji na serwer wirtualny
 Przyklad: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/google.yml
@@ -9,7 +9,7 @@ Automatyczne uruchamianie skryptow SQL, dla tworzenia struktury baz danych/zapel
 Przyklad: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/sql_execution.yaml
 
 
-======================Sprawozdanie====================================
+======================Sprawozdanie 1====================================
 Link do Github repozytorii, oraz opis swojego rozwiazania.
 
 Sprawozdanie odesłać: v.cerniavski@uwb.edu.pl
@@ -91,12 +91,14 @@ DB_NAME:studNumer albumu przyklad: stud88327
 
 
 =======================================KUBERNETES====================
+Sprawozdanie nr. 2 z Kubernetes odesłać: v.cerniavski@uwb.edu.pl
+
+
 
 Przykładowe rozwiązanie:
 https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/deploy_k8s.yaml
 
 Potrzebujemy:
-
 
 Dockerfile : https://github.com/valdemarcz/uwb_app/blob/main/Dockerfile
 
