@@ -114,9 +114,13 @@ https://github.com/valdemarcz/uwb_app/tree/main/k8s
 |--------------|------------|---------|
 | `SERVER_HOST`   | IP of server | 34.30.137.23 |
 | `PROJECT_NAME`     | Name of GC project (For artifactory) | `hopeful-keep-480204-e0` |
+| `REPOSITORY_NAME` | Artifactory registry Repo name | `uwb` |
+| `REPOSITORY_LOCATION` | Artifactory registry Repo Location | `us-central1` |
+| `REPOSITORY_URL` | Artifactory registry Repo URL | `us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb` |
 | `SSH_KEY` | SSH Private key | `github.com/valdemarcz/uwb_app/gcp_vm_key` |
 | `SSH_USER` | SSH Username | `github-actions` |
 | `SSH_PASSPHRASE` | SSH Passphrase | `github` |
+| `GCP_AUTH_KEY` | GCP Authentication JSON key | `github` |
 
 
 ## Deployment i Service (Kubernetes)
