@@ -53,6 +53,7 @@ jobs:
           script: |
             script: |
               cd ~/app
+              ls
               kubectl apply -f deployment.yaml
               kubectl apply -f service.yaml
               kubectl rollout status deployment/uwb-app
