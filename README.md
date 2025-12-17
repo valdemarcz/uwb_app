@@ -9,12 +9,14 @@ Automatyczne uruchamianie skryptow SQL, dla tworzenia struktury baz danych/zapel
 Przyklad: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/sql_execution.yaml
 
 
-
-
-Sprawozdanie:
+======================Sprawozdanie====================================
 Link do Github repozytorii, oraz opis swojego rozwiazania.
 
 Sprawozdanie odesłać: v.cerniavski@uwb.edu.pl
+
+
+
+======================INFO===========================================
 
 | Nr. albumu | Port |
 |-----------|--------|
@@ -32,8 +34,9 @@ Sprawozdanie odesłać: v.cerniavski@uwb.edu.pl
 
 
 
-
 ======================PHP aplikacja====================================
+
+
 Zautomatyzowane umieszczenie aplikacji na serweże Apache2, za pomocą github actions.
 
 # uwb_app (Przykład)
@@ -89,6 +92,22 @@ DB_NAME:studNumer albumu przyklad: stud88327
 
 =======================================KUBERNETES====================
 
+Przykładowe rozwiązanie:
+https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/deploy_k8s.yaml
+
+Potrzebujemy:
+
+
+Dockerfile : https://github.com/valdemarcz/uwb_app/blob/main/Dockerfile
+
+
+Kubernetes manifest pliki, zazwyczaj w folderze k8s
+Deployment, Service w naszym przypadku wystarczy.
+
+https://github.com/valdemarcz/uwb_app/tree/main/k8s
+
+
+
 | Variable Name | Description | value |
 |--------------|------------|---------|
 | `SERVER_HOST`   | IP of server | 34.30.137.23 |
@@ -98,4 +117,32 @@ DB_NAME:studNumer albumu przyklad: stud88327
 | `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 
 
+## Deployment i Service (Kubernetes)
 
+### Deployment
+Deployment odpowiada za uruchamianie i utrzymanie aplikacji w klastrze Kubernetes. Zarządza Podami i dba o to, aby aplikacja działała w zadeklarowanym stanie.
+
+Deployment:
+- tworzy i zarządza Podami aplikacji
+- utrzymuje zadaną liczbę replik
+- restartuje Pody w przypadku awarii
+- umożliwia aktualizacje bez przestoju (rolling update) oraz cofanie zmian (rollback)
+
+Plik: `deployment.yaml`
+
+---
+
+### Service
+Service zapewnia stabilny dostęp sieciowy do Podów aplikacji, niezależnie od ich liczby i adresów IP.
+
+Service:
+- udostępnia stały adres IP oraz nazwę DNS
+- rozdziela ruch pomiędzy Pody (load balancing)
+- umożliwia dostęp wewnątrz klastra lub z zewnątrz, w zależności od typu Service
+
+Plik: `service.yaml`
+
+---
+
+### Współpraca Deployment i Service
+Deployment uruchamia Pody aplikacji, natomiast Service kieruje do nich ruch sieciowy na podstawie etykiet (labels). Dzięki temu aplikacja pozostaje dostępna nawet podczas restartów lub skalowania Podów.
