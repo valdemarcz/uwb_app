@@ -41,7 +41,8 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
           script: |
+            export KUBECONFIG=$HOME/.kube/config
             cd ~/app
             kubectl apply -f k8s/deployment.yaml
             kubectl apply -f k8s/service.yaml
-            kubectl rollout status deployment/uwb-app
+            kubectl rollout status deployment/uwb-app --timeout=120s
