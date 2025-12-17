@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: uwb-app
+  labels:
+    app: uwb-app
 spec:
   replicas: 1
   selector:
@@ -14,6 +16,6 @@ spec:
     spec:
       containers:
         - name: uwb-app
-          image: gcr.io/YOUR-PROJECT/php-app:latest
+          image: us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
           ports:
             - containerPort: 80
