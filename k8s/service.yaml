@@ -1,1 +1,10 @@
-
+metadata:
+  name: uwb-app-service
+spec:
+  type: NodePort
+  selector:
+    app: uwb-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 8080
