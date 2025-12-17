@@ -41,7 +41,7 @@ jobs:
             key: ${{ secrets.VM_SSH_KEY }}
             passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
             source: "k8s/*"
-            target: "~/app/k8s/"
+            target: "~/app/"
       
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v1.0.3
