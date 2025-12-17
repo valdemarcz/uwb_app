@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
           script: |
-            export KUBECONFIG=/home/<user>/.kube/config
+            export KUBECONFIG=/home/v96231143/.kube/config
       
             echo "Checking Kubernetes cluster..."
             kubectl cluster-info
