@@ -32,16 +32,6 @@ jobs:
       - name: Push image
         run: |
           docker push us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
-
-      - name: Copy k8s folder to VM
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: ${{ secrets.K8S_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.VM_SSH_KEY }}
-          passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
-          source: "k8s"
-          target: "~/app/"
     
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v1.0.3
@@ -52,7 +42,6 @@ jobs:
           passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
           script: |
             cd ~/app
-            ls
-            kubectl apply -f deployment.yaml
-            kubectl apply -f service.yaml
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
             kubectl rollout status deployment/uwb-app
