@@ -51,9 +51,8 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
           script: |
-            script: |
-              cd ~/app
-              ls
-              kubectl apply -f deployment.yaml
-              kubectl apply -f service.yaml
-              kubectl rollout status deployment/uwb-app
+            cd ~/app
+            ls
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+            kubectl rollout status deployment/uwb-app
