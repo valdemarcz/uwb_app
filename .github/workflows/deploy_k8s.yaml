@@ -34,7 +34,7 @@ jobs:
           docker push us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
 
       - name: Update app files
-        uses: appleboy/scp-action@v1.0.3
+        uses: appleboy/scp-action@v0.1.5
         with:
             host: ${{ secrets.K8S_HOST }}
             username: ${{ secrets.VM_USER }}
