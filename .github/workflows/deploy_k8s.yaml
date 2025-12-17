@@ -41,7 +41,20 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           passphrase: ${{ secrets.VM_SSH_PASSPHRASE }}
           script: |
-            export KUBECONFIG=$HOME/.kube/config
+            KUBECONFIG_PATH=/home/${{ secrets.VM_USER }}/.kube/config
+            mkdir -p $(dirname $KUBECONFIG_PATH)
+      
+            if [ ! -f "$KUBECONFIG_PATH" ]; then
+              sudo cp /etc/kubernetes/admin.conf $KUBECONFIG_PATH
+              sudo chown $USER:$USER $KUBECONFIG_PATH
+            fi
+      
+            export KUBECONFIG=$KUBECONFIG_PATH
+      
+            echo "Checking Kubernetes cluster..."
+            kubectl cluster-info
+            kubectl get nodes
+      
             cd ~/app
             kubectl apply -f k8s/deployment.yaml --validate=false
             kubectl apply -f k8s/service.yaml --validate=false
