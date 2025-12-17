@@ -17,7 +17,7 @@ spec:
       containers:
         - name: uwb-app
           image: us-central1-docker.pkg.dev/hopeful-keep-480204-e0/uwb/uwb-app:latest
-          imagePullSecrets:
-            - name: regcred
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: regcred
