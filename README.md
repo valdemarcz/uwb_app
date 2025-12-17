@@ -9,78 +9,93 @@ Automatyczne uruchamianie skryptow SQL, dla tworzenia struktury baz danych/zapel
 Przyklad: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/sql_execution.yaml
 
 
+
+
 Sprawozdanie:
 Link do Github repozytorii, oraz opis swojego rozwiazania.
 
 Sprawozdanie odesłać: v.cerniavski@uwb.edu.pl
 
-Porty:
+| Nr. albumu | Port |
+|-----------|--------|
+| `89419`   | `8002` |
+| `89402`   | `8003` | 
+| `89428`   | `8004` | 
+| `89412`   | `8005` | 
+| `88360`   | `8006` | 
+| `89413`   | `8007` | 
+| `88327`   | `8008` | 
+| `89404`   | `8009` | 
+| `89403`   | `8010` | 
+| `89411`   | `8011` | 
+| `89417`   | `8012` |  
 
-89419 - 8002
 
-89402	- 8003
 
-89428	- 8004
 
-89412 -	8005
+======================PHP aplikacja====================================
+Zautomatyzowane umieszczenie aplikacji na serweże Apache2, za pomocą github actions.
 
-88360	- 8006
-
-89413	- 8007
-
-88327	- 8008
-
-89404	- 8009
-
-89403	- 8010
-
-89411	- 8011
-
-89417	- 8012
-
-# uwb_app
+# uwb_app (Przykład)
 simple php app with connection to database, for deployment VM
-
 https://github.com/valdemarcz/uwb_app
 
+# Przykładowy skrypt dla umieszczenia strony:
+https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/google.yml
 
-34.30.137.23 external IP
+Gdzie:
+script: sudo /usr/local/bin/deploy_app.sh vc 8081
+vc - przykładowa nazwa foldera, gdzie będzie umieszczona aplikacja 
+     (rekomendacja wykorzystać numer albumu)
+8081 - port, na którym aplikacja będzie udostępniona.
 
-SSH KEY= github.com/valdemarcz/uwb_app/gcp_vm_key
+Na jednym serwerze będzie udostępnione kilka aplikacji, 
+dlatego został stworzony skrypt: deploy_app.sh
+który automatycznie udostępnia aplikację (folder ukazany jako 1 parameter) 
+pod portem ukazanym jako 2 parametr oraz restartuje apache serwer, aby zmiany zadziałały.
+https://github.com/valdemarcz/uwb_app/blob/main/deploy_app.sh
 
-/var/www/vc
- 
-Username: github-actions
+| Variable Name | Description | value |
+|--------------|------------|---------|
+| `SERVER_HOST`   | IP of apache server | 34.63.108.128 |
+| `DB_USER`     | Database user | `stud` |
+| `SSH_KEY` | SSH Private key | `github.com/valdemarcz/uwb_app/gcp_vm_key` |
+| `SSH_USER` | SSH Username | `github-actions` |
+| `SSH_PASSPHRASE` | SSH Passphrase | `github` |
+| `DES_FOLDER` | Where to place php code | `/var/www/89411` |
 
-passphrase: github
 
+=============================BAZA DANYCH (MY SQL)======================
+Zautomatyzowana inicjalizacja struktury bazy danych, oraz jej aktualizacja.
 
-Database:
+Przykład: https://github.com/valdemarcz/uwb_app/blob/main/.github/workflows/sql_execution.yaml
 
 GCP_SA_KEY: https://github.com/valdemarcz/uwb_app/blob/main/peak-vista-478015-f6-6e6f1f882985.json
 
 DB_NAME:studNumer albumu przyklad: stud88327
 
-DB_HOST: 34.58.246.93
-
-DB_USER: stud
-
-DB_PASSWORD: Uwb123!!
-
-
-
-
-
-
+| Variable Name | Description | value |
+|--------------|------------|---------|
+| `DB_HOST`   | Database host address | 34.58.246.93 |
+| `DB_USER`     | Database user | `stud` |
+| `DB_NAME`     | Database name (Example) | `stud88327` |
+| `DB_PASSWORD` | Database password | `Uwb123!!` |
+| `SSH_KEY` | SSH Private key | `github.com/valdemarcz/uwb_app/gcp_vm_key` |
+| `SSH_USER` | SSH Username | `github-actions` |
+| `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 
 
 
-KUBERNETES:
 
+=======================================KUBERNETES====================
 
+| Variable Name | Description | value |
+|--------------|------------|---------|
+| `SERVER_HOST`   | IP of server | 34.30.137.23 |
+| `PROJECT_NAME`     | Name of GC project (For artifactory) | `hopeful-keep-480204-e0` |
+| `SSH_KEY` | SSH Private key | `github.com/valdemarcz/uwb_app/gcp_vm_key` |
+| `SSH_USER` | SSH Username | `github-actions` |
+| `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 
-projekt: hopeful-keep-480204-e0
-
-IP:34.63.108.128
 
 
