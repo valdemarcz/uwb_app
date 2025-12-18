@@ -87,21 +87,6 @@ DB_NAME:studNumer albumu przyklad: stud88327
 | `SSH_USER` | SSH Username | `github-actions` |
 | `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 
-| Nr. albumu | Port |
-|-----------|--------|
-| `89419`   | `30002` |
-| `89402`   | `30003` | 
-| `89428`   | `30004` | 
-| `89412`   | `30005` | 
-| `88360`   | `30006` | 
-| `89413`   | `30007` | 
-| `88327`   | `30008` | 
-| `89404`   | `30009` | 
-| `89403`   | `30010` | 
-| `89411`   | `30011` | 
-| `89417`   | `30012` | 
-
-
 =======================================KUBERNETES====================
 Sprawozdanie nr. 2 z Kubernetes odesłać: v.cerniavski@uwb.edu.pl
 
@@ -120,7 +105,12 @@ Deployment, Service w naszym przypadku wystarczy.
 
 https://github.com/valdemarcz/uwb_app/tree/main/k8s
 
+Przy sciąganiu image'a z artifactory storage obowiązkowa jest autoryzacja, 
+na serwerze w kubernetes stworzony jest secret: regcred
 
+Za pomocą ukazania go w pliku deployment odbywa się autoryzacja.
+      imagePullSecrets:
+        - name: regcred
 
 | Variable Name | Description | value |
 |--------------|------------|---------|
@@ -134,6 +124,21 @@ https://github.com/valdemarcz/uwb_app/tree/main/k8s
 | `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 | `GCP_AUTH_KEY` | GCP Authentication JSON key | `github` |
 
+
+
+| Nr. albumu | Port |
+|-----------|--------|
+| `89419`   | `30002` |
+| `89402`   | `30003` | 
+| `89428`   | `30004` | 
+| `89412`   | `30005` | 
+| `88360`   | `30006` | 
+| `89413`   | `30007` | 
+| `88327`   | `30008` | 
+| `89404`   | `30009` | 
+| `89403`   | `30010` | 
+| `89411`   | `30011` | 
+| `89417`   | `30012` | 
 
 ## Deployment i Service (Kubernetes)
 
