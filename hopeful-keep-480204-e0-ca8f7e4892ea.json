@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hopeful-keep-480204-e0",
+  "private_key_id": "ca8f7e4892eaca43bf0705173b8f95bcab2178a4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCU+MwiVtRw/Y6x\n6qzn9nf3kHsGRBOg0i7wF/rbT620K1PZnh15HaQd/W+UXYzZYPx4lpjTVM2NRlN2\nBpLvLGnJk2sH9emB6diSOZQbprnyIFaf9Dh1pCpwce8SRLMZBFC5gOx6tGzj1mwY\nW/L8M3zOejWKxmOEGZpwdPRWqVVGUBepOYgjB65F5w1ku9J764ah53YWPjglhc3J\nMjgFCvssPHuZyj6GPCFtEFbJUW+QDzBBbXjQrVlebwePLVN9EwzoR4A/zSFdlW8G\ndIksyJQvU1fZM2X//BL7F+/wrWn1Z2Q3fJ2Ecz1EBcFaVcsrBq+aBbrgUtvdkkQo\nyU5EoVuHAgMBAAECggEALdxf/4xKj1RHqxcLTsfOC90jOn0Xq9E42PoQ5JYlbAtQ\nn3RxL1mELiVYxcx88WjNoJQADUMUmpLVW8bPUikSkhc7gnJehfuHDBEEuvR7VwJE\nmK52+SRmWkKA7ldO6XsuHMWHR4km4ocetOsNpT12hRwTQpsrhL3bERa4J7uugFvs\na4JeRbz5CAy5oVRTCWsMBzB+VWo6HuCfy4TnTtU9oqoLElcD24dYWDIKh/VHJ4z7\nOvLN3TMhRyRA7N82aEZHnTFP8+nDkfZDYkWfmIY8mpsgiKXfE2l6CvF03AKt57vt\nZGIFhSRjPxjXSPxlH05OkXXu7e/H85zrGeJwoOdLCQKBgQDLzVnfBWx5CkbPZPPh\n43MZ2lcwj7RoWgnYNy1zd+ezEWSjOWO0BgeyAnpJZadCz0rjLcjTEISNFQ/FsZNp\n5tSXOBgsbbUf4OPNy8sPrt0ZNvCmq2l0flACZIdhorx9BVEelQf6TkcMXCkwPtAj\n2ivR8fWqr4kHoRzf/FnpqCe7SQKBgQC7IGbFrsyqNzhAANWyLvASw2HjTcZcjH6f\nJwgdCfy74jr9zAFvb3Jm4fmkh79TTAXpGoub2NoAcJyCzFln91DxMZDRodenzqBr\naoYGLoxOtTcV9HzyHks8/Jz7BxMQwK8ucS/Ipb0ijhaWUyJZzFxjDIgRTw+Ue70R\nGnrrpVoQTwKBgAOoM6yk1EV3wb2G+jlbc31LRbVBXuNgejy/ALnJtQapkTy8kuVw\nFkNDeB5JDK9OOPHKqIfhC//cGORbQ2HrGnV8NDLX5SAlUPEobwRhBuak7byP5tyI\nR7dDRoqh+O/lYIdD9ViwfuXh4XtUJTf/ejnSNa5SaAsTAQmj5Zkjw1LBAoGBALNc\nNkXq6y+IKDlo02usA97oOc5mwOf6nm+sOOGkrgPkr0iPHx0RxKUKmn9ywhd0OgIZ\nuJFUBHkBd3MDrfqyGnplWPsmVo/4xNjQzM/mFARpO/imVJC6KsG1HD6cpFCdcAxi\n3ztCaYxShyHlY3qRIEisPUvh7PwUsr9PE10FK9OPAoGBAJaSwNatqMjFcKdfv2t6\nduAeQtauXUCj7tBmXtdf8/vn+0aJj4yOKGCAioKlg05zlN/Id/1nKjr/NCNT/FgX\nZYTkUfymyP7h9Zvca9gd6te9np9YDcwilRQi76iflAWnuUUphGDYxBEVgP5InkFo\nbHeCa0S0L3TcMxw2cfT8ioVF\n-----END PRIVATE KEY-----\n",
+  "client_email": "stud-347@hopeful-keep-480204-e0.iam.gserviceaccount.com",
+  "client_id": "101259908310290282893",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/stud-347%40hopeful-keep-480204-e0.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
