@@ -123,6 +123,7 @@ Za pomocą ukazania go w pliku deployment odbywa się autoryzacja.
 | `SSH_USER` | SSH Username | `github-actions` |
 | `SSH_PASSPHRASE` | SSH Passphrase | `github` |
 | `GCP_AUTH_KEY` | GCP Authentication JSON key | `github` |
+| `K8S_KEY` | Kubernetes google VM Auth key | `[github.com/valdemarcz/uwb_app/ho](https://github.com/valdemarcz/uwb_app/blob/main/hopeful-keep-480204-e0-ca8f7e4892ea.json)` |    
 
 
 
